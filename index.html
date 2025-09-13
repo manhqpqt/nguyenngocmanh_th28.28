@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng nhập & Đăng ký</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 15px;
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2 id="form-title">Đăng nhập</h2>
+<form id="loginForm" action="login.php" method="POST">
+  <input type="text" name="username" placeholder="Tên đăng nhập" required>
+  <input type="password" name="password" placeholder="Mật khẩu" required>
+  <button type="submit">Đăng nhập</button>
+</form>
+  <form id="registerForm" style="display:none;">
+    <input type="text" placeholder="Tên đăng nhập" required>
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Mật khẩu" required>
+    <button type="submit">Đăng ký</button>
+  </form>
+
+  <div class="toggle-link" onclick="toggleForms()">Chưa có tài khoản? Đăng ký</div>
+</div>
+
+<script>
+  function toggleForms() {
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const formTitle = document.getElementById("form-title");
+    const toggleLink = document.querySelector(".toggle-link");
+
+    if (loginForm.style.display === "none") {
+      loginForm.style.display = "flex";
+      registerForm.style.display = "none";
+      formTitle.textContent = "Đăng nhập";
+      toggleLink.textContent = "Chưa có tài khoản? Đăng ký";
+    } else {
+      loginForm.style.display = "none";
+      registerForm.style.display = "flex";
+      formTitle.textContent = "Đăng ký";
+      toggleLink.textContent = "Đã có tài khoản? Đăng nhập";
+    }
+  }
+</script>
+
+</body>
+</html>
